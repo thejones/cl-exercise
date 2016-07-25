@@ -5,7 +5,7 @@ import requiresAuth from '../utils/requires-auth'
 
 export default function (program, app) {
   // Set up feathers services.
-  const workoutService = app.service('workouts')
+  const messageService = app.service('messages')
   program
     .command('create')
     .description('create a new workout')
@@ -24,7 +24,7 @@ export default function (program, app) {
             message: 'Body:'
           }
         ]).then((answers) => {
-          workoutService.create(answers).then((data) => {
+          messageService.create(answers).then((data) => {
             console.log(chalk.green('Success'))
             console.log(data)
           }).catch(err => console.log(err))

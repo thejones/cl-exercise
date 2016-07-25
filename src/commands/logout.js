@@ -1,12 +1,9 @@
-import path from 'path'
-import inquirer from 'inquirer'
-import { existsSync as exists } from 'fs'
-import merge from 'lodash.merge'
+import fs from 'fs'
 
-export default function(program) {
+export default function (program) {
   program
     .command('logout')
-    .description('logout a template')
+    .description('logout from cli app.')
     .alias('g')
     .action(() => {
       console.log('logout has been called')

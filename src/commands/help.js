@@ -2,7 +2,7 @@
  * Display help
  */
 
-export default function(program) {
+export default function (program) {
   program
     .command('help')
     .description('display help menu')
