@@ -1,5 +1,5 @@
 {
-  "name": "messages",
+  "name": "feathers-messages-cli",
   "description": "Command-line client and tutorial for feathersjs",
   "version": "1.0.1",
   "homepage": "https://github.com/thejones",
@@ -13,14 +13,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/thejones/messages-cli.git"
+    "url": "git://github.com/thejones/feathers-messages-cli.git"
   },
   "author": {
     "name": "Alex Jones",
     "email": "alexander.t.jones@gmail.com"
   },
   "bugs": {
-    "url": "https://github.com/thejones/messages-cli/issues"
+    "url": "https://github.com/thejones/feathers-messages-cli/issues"
   },
   "engines": {
     "node": ">= 5.0.0",
