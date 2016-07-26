@@ -15,13 +15,8 @@ export default function (program, app) {
         inquirer.prompt([
           {
             type: 'input',
-            name: 'name',
-            message: 'Name:'
-          },
-          {
-            type: 'input',
-            name: 'body',
-            message: 'Body:'
+            name: 'text',
+            message: 'Text:'
           }
         ]).then((answers) => {
           messageService.create(answers).then((data) => {

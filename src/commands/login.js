@@ -21,11 +21,13 @@ export default function (program, app) {
           message: 'Password:'
         }
       ]).then(function (answers) {
+        console.log(answers.password)
         app.authenticate({
           type: 'local',
-          'email': answers.email,
-          'password': answers.password
+          'email': 'alexander.t.jones@gmail.com',
+          'password': 'password'
         }).then(function (result) {
+          console.log('result')
           fs.writeFile(jwtFile, result.token, function (err) {
             if (err) {
               console.log(chalk.red('Error saving auth information.'))
@@ -35,7 +37,6 @@ export default function (program, app) {
             console.log(chalk.green('Login successful'))
           })
         }).catch(function (error) {
-          console.log('anyyything')
           console.log(chalk.red(error))
         })
       }).catch(err => {

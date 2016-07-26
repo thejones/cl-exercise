@@ -15,11 +15,10 @@ import login from './commands/login'
 import logout from './commands/logout'
 import help from './commands/help'
 import version from './commands/version'
-import authCheck from './utils/auth-check.js'
+import authCheck from './utils/auth-check'
+import configApp from './utils/config-app'
 
 const debug = Debug('feathers-cli')
-
-const host = 'http://localhost:3030'
 
 export default function () {
   let args = process.argv
@@ -39,25 +38,24 @@ export default function () {
     your node environment. See https://github.com/creationix/nvm.
     `)
 
+
+
   authCheck().then(data => {
     program.authToken = data.toString()
-    setup()
   }).catch((err) => {
     if (err) {
       program.authToken = null
     }
-    setup()
-  })
-
-  // Register our commands with commander
-  const registerCommands = (app) => {
+  }).then(()=>{
+    const app = configApp(program);
     create(program, app)
     list(program, app)
     login(program, app)
     logout(program)
     help(program)
     version(program)
-  }
+    run()
+  })
 
   const run = () => {
     program.parse(args)
@@ -65,23 +63,6 @@ export default function () {
     if (!program.args.length) {
       program.help()
     }
-  }
-
-  const setup = () => {
-    const client = request.defaults({
-      'auth': {
-        'bearer': program.authToken
-      }
-    })
-
-    // Config feathers client
-    const app = feathers()
-      .configure(hooks())
-      .configure(rest(host).request(client))
-      .configure(authentication())
-
-    registerCommands(app)
-    run()
   }
 
   // Add some extra padding
