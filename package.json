@@ -1,7 +1,7 @@
 {
   "name": "feathers-messages-cli",
   "description": "Command-line client and tutorial for feathersjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/thejones",
   "main": "lib/",
   "bin": {
